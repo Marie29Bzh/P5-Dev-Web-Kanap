@@ -10,7 +10,7 @@ async function showIndex() {
 }
 
 /**
- * génère le code html d'un finche produit
+ * génère le code html d'une fiche produit
  *
  * @param   {Object}  product  [product description]
  * @param   {Array.<String>}  product.colors   par exmple : [  "Blue", "White",  "Black" ],

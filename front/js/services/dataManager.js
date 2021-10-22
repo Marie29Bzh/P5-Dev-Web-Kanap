@@ -6,3 +6,8 @@ async function getAllProducts(){
     const data = await response.json();
     return data;
 }
+
+async function getProduct(idProduct){
+    const response = await fetch(server+"/"+idProduct);
+    return await response.json();
+}
