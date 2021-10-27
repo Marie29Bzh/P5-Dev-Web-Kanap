@@ -1,8 +1,10 @@
 window.onload = showProduct;
 
+let produit;
+
 async function showProduct() {
   const idProduit = window.location.search.slice(4);
-  const produit = await getProduct(idProduit);
+  produit = await getProduct(idProduit);
   console.log(produit);
 
   /*
@@ -28,6 +30,9 @@ async function showProduct() {
   document.getElementById("colors").innerHTML += options;
 }
 
-document.getElementById("addToCart").addEventListener("click", function() {
-  document.getElementById("addToCart").innerHTML = "Produit ajouté";
+document.getElementById("addToCart").addEventListener("click", function(evt) {
+  const qty = parseInt(document.getElementById("quantity").value);
+  if (qty === 0) return;
+  addToCart({"_id":produit._id, "name":produit.name}, qty);
+  evt.target.innerHTML = "Produit ajouté";
 });
