@@ -14,11 +14,26 @@ async function getProduct(idProduct){
 }
 
 function addToCart(product, qty){
-    if (!ls[product._id]) ls[product._id] = {product, qty:0};
+    if (!ls[product._id]) {
+        ls[product._id] = {...product, qty:0};
+        delete ls[product._id].altTxt;
+        delete ls[product._id].description;
+        delete ls[product._id].colors;
+    }
     ls[product._id].qty +=qty;
+    updateLocalStorage();
+}
+
+function updateProductQuantity(id, qty){
+    ls[id].qty = qty;
     updateLocalStorage();
 }
 
 function updateLocalStorage(){
     localStorage.setItem("panier", JSON.stringify(ls));
+}
+
+function removeProduct(id){
+    delete ls[id];
+    updateLocalStorage();
 }

@@ -33,6 +33,6 @@ async function showProduct() {
 document.getElementById("addToCart").addEventListener("click", function(evt) {
   const qty = parseInt(document.getElementById("quantity").value);
   if (qty === 0) return;
-  addToCart({"_id":produit._id, "name":produit.name}, qty);
+  addToCart(produit, qty);
   evt.target.innerHTML = "Produit ajouté";
 });
